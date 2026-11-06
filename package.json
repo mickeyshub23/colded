@@ -10,7 +10,7 @@
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit",
     "server": "tsx server/index.ts",
-    "start": "node server/index.js"
+    "start": "tsx server/index.ts"
   },
   "dependencies": {
     "@google/genai": "^2.4.0",
@@ -28,6 +28,7 @@
     "multer": "^2.5.0",
     "react": "^19.0.1",
     "react-dom": "^19.0.1",
+    "tsx": "^4.21.0",
     "uuid": "^14.0.3",
     "vite": "^8.3.0",
     "zod": "^4.6.7"
@@ -42,7 +43,6 @@
     "@types/react-dom": "^19.3.0",
     "autoprefixer": "^10.4.21",
     "tailwindcss": "^4.3.3",
-    "tsx": "^4.21.0",
     "typescript": "^7.0.2"
   }
 }

@@ -4,7 +4,7 @@ services:
     env: node
     region: oregon
     buildCommand: npm install --legacy-peer-deps && npm run build
-    startCommand: node server/index.js
+    startCommand: npx tsx server/index.ts
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
