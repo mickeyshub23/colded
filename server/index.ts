@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import { createServer } from 'http';
+import { join } from 'path';
 import routes from './routes';
 
 dotenv.config();
@@ -31,6 +32,15 @@ app.use('/api', routes);
 // Health check
 app.get('/health', (req: Request, res: Response) => {
   res.json({ success: true, data: { status: 'ok', timestamp: new Date().toISOString() } });
+});
+
+// Serve static frontend
+const distPath = join(process.cwd(), 'dist');
+app.use(express.static(distPath));
+
+// Catch-all: serve index.html for non-API routes (SPA fallback)
+app.get(/^\/(?!api).*/, (_req: Request, res: Response) => {
+  res.sendFile(join(distPath, 'index.html'));
 });
 
 // 404 handler
